@@ -1,10 +1,11 @@
-# Calculate protein episcores from Gadd et al. in the GS 20k sample
+# Calculate protein episcores from [Gadd et al. 2022](https://elifesciences.org/articles/71802) in the GS 20k sample
 
 - Use GRM corrected m-vals on the full 20k sample, located on the `GenScotDepression` datastore server (`smb://cmvm.datastore.ed.ac.uk/igmm/GenScotDepression`) here:`/exports/igmm/datastore/GenScotDepression/data/genscot/methylation/20k_GRM_corrected/`
 - These are in [OSCA file format](https://yanglab.westlake.edu.cn/software/osca/#BODformat).
 - Use [OSCA](https://yanglab.westlake.edu.cn/software/osca/#PredictionAnalysis) to calculate episcores for each protein.
 - Combine the episcores into a dataframe, where each column is a protein episcore and each row is a GS participant.
 - Use these scores in combination with covariates located here: `/exports/igmm/datastore/GenScotDepression/data/genscot/methylation/20k_GRM_corrected/covariates_xs.tsv`
+- **Final file to use is located on datastore here: /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/Output/GRM_corrected_episcores.csv**
 
 ## Stage methylation data into scratch space from datastore
 ```
@@ -37,15 +38,13 @@ qsub /exports/igmm/eddie/GenScotDepression/amelia/GS_episcores/Scripts/combineSc
 
 ```
 
-### Copy files to datastore (and local machine) to run downstream analysis
+### Copy files to datastore to run downstream analysis
 
 ```
 qlogin -q staging
-cd /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/
-git clone 
-cp /exports/eddie/scratch/s1211670/episcore_output/GRM_corrected_episcores.csv /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/
+cd /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/
+git clone git@github.com:AmeliaES/GS_episcores.git
+mkdir GS_episcores/Output
+cp /exports/eddie/scratch/s1211670/episcore_output/GRM_corrected_episcores.csv /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/Output
 ```
 
-```
-scp -r s1211670@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/s1211670/episcore_output/GRM_corrected_episcores.csv /Users/aes/OneDrive\ -\ University\ of\ Edinburgh/PhD/Studies/GS_MDD_episcores/Input
-```
