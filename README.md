@@ -5,7 +5,7 @@
 - Use [OSCA](https://yanglab.westlake.edu.cn/software/osca/#PredictionAnalysis) to calculate episcores for each protein.
 - Combine the episcores into a dataframe, where each column is a protein episcore and each row is a GS participant.
 - Use these scores in combination with covariates located here: `/exports/igmm/datastore/GenScotDepression/data/genscot/methylation/20k_GRM_corrected/covariates_xs.tsv`
-- **Final file to use is located on datastore here: /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/GRM_corrected_episcores/GRM_corrected_episcores.csv**
+- **Final file to use is located on datastore here: /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GRM_corrected_episcores/GRM_corrected_episcores.csv**
 
 ## Stage methylation data into scratch space from datastore
 ```
