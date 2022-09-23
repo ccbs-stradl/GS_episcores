@@ -1,4 +1,5 @@
 #$ -N combineScores
+#$ -hold_jid calcScores
 #$ -l h_vmem=32G
 #$ -l h_rt=48:00:00
 #$ -e /exports/igmm/eddie/GenScotDepression/amelia/GS_episcores/job_logs
