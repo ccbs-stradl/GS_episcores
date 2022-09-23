@@ -5,7 +5,7 @@
 - Use [OSCA](https://yanglab.westlake.edu.cn/software/osca/#PredictionAnalysis) to calculate episcores for each protein.
 - Combine the episcores into a dataframe, where each column is a protein episcore and each row is a GS participant.
 - Use these scores in combination with covariates located here: `/exports/igmm/datastore/GenScotDepression/data/genscot/methylation/20k_GRM_corrected/covariates_xs.tsv`
-- **Final file to use is located on datastore here: /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/Output/GRM_corrected_episcores.csv**
+- **Final file to use is located on datastore here: /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/GRM_corrected_episcores/GRM_corrected_episcores.csv**
 
 ## Stage methylation data into scratch space from datastore
 ```
@@ -43,8 +43,9 @@ qsub /exports/igmm/eddie/GenScotDepression/amelia/GS_episcores/Scripts/combineSc
 ```
 qlogin -q staging
 cd /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/
-git clone git@github.com:AmeliaES/GS_episcores.git
-mkdir GS_episcores/Output
-cp /exports/eddie/scratch/s1211670/episcore_output/GRM_corrected_episcores.csv /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GS_episcores/Output
+mkdir GRM_corrected_episcores
+cp /exports/eddie/scratch/s1211670/episcore_output/GRM_corrected_episcores.csv /exports/igmm/datastore/GenScotDepression/data/genscot/methylation/GRM_corrected_episcores/GRM_corrected_episcores.csv
+# add a readme with a link to this github repo
+vi GRM_corrected_episcores/README.md
 ```
 
